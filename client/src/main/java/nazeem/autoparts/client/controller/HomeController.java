@@ -5,6 +5,8 @@ package nazeem.autoparts.client.controller;
     Contact: syed.noman.azeem@gmail.com
 */
 import nazeem.autoparts.library.model.*;
+import nazeem.autoparts.library.model.product.Make;
+import nazeem.autoparts.library.model.product.Product;
 import nazeem.autoparts.library.service.*;
 import nazeem.autoparts.library.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,8 +41,8 @@ public class HomeController {
         List<Make> listMake = makeService.findAll();
         model.addAttribute("listMake", listMake);
 
-        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(listMake.get(0).getId());
-        model.addAttribute("listModel", listModel);
+//        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(listMake.get(0).getId());
+//        model.addAttribute("listModel", listModel);
 
         List<Integer> listYear = utility.getYears();
         model.addAttribute("listYear", listYear);
@@ -97,9 +99,9 @@ public class HomeController {
     @RequestMapping(value = "/models")
     @ResponseBody
     public List<Dropdown> getModels(@RequestParam Long make) {
-        List<nazeem.autoparts.library.model.Model> modelList = modelService.getModels(make);
+        List<nazeem.autoparts.library.model.product.Model> modelList = modelService.getModels(make);
         List<Dropdown> dropdownList=new ArrayList<>();
-        for (nazeem.autoparts.library.model.Model model: modelList) {
+        for (nazeem.autoparts.library.model.product.Model model: modelList) {
             dropdownList.add(new Dropdown(model.getId(), model.getName()));
         }
         return dropdownList;

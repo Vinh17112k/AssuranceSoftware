@@ -6,7 +6,7 @@ package nazeem.autoparts.admin.controller;
 */
 import javax.validation.Valid;
 
-import nazeem.autoparts.library.model.Category;
+import nazeem.autoparts.library.model.product.Category;
 import nazeem.autoparts.library.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

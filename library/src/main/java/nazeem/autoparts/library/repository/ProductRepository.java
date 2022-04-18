@@ -1,12 +1,9 @@
 package nazeem.autoparts.library.repository;
 
-/*
-    Created By: noman azeem
-    Contact: syed.noman.azeem@gmail.com
-*/
-import nazeem.autoparts.library.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import nazeem.autoparts.library.model.product.Product;
 
 import java.util.List;
 
@@ -24,10 +21,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "and (length(?1) = 0 or p.name like concat('%', ?1, '%')) " +
             "and (length(?2) = 0 or category_id= ?2) "+
             "and (?3=1  or make_id= ?3) "+
-            "and (?4=1 or model_id= ?4) "+
-            "and (length(?5) =0 or year= ?5) "
+            "and (length(?4) =0 or year= ?4) "
             , nativeQuery = true)
-    List<Product> searchProduct2(String keyword, String categoryId, String makeId, String modelId, String year);
+    List<Product> searchProduct2(String keyword, String categoryId, String makeId, String year);
 
 
     @Query(value="select p.* from Product p where 1=1 and is_active=1 and is_deleted=0 limit 8", nativeQuery = true)

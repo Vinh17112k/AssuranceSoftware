@@ -1,10 +1,6 @@
 package nazeem.autoparts.admin.controller;
 
-/*
-    Created By: noman azeem
-    Contact: syed.noman.azeem@gmail.com
-*/
-import nazeem.autoparts.library.model.Make;
+import nazeem.autoparts.library.model.product.Make;
 import nazeem.autoparts.library.service.MakeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

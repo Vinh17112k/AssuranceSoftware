@@ -1,10 +1,6 @@
 package nazeem.autoparts.library.service;
 
-/*
-    Created By: noman azeem
-    Contact: syed.noman.azeem@gmail.com
-*/
-import nazeem.autoparts.library.model.Product;
+import nazeem.autoparts.library.model.product.Product;
 import nazeem.autoparts.library.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -59,8 +55,8 @@ public class ProductService {
     }
 
 
-    public Page<Product> searchResults(String keyword, String categoryId, String makeId, String modelId, String year, Pageable pageable) {
-        List<Product> products = productRepository.searchProduct2(keyword, categoryId, makeId, modelId, year);
+    public Page<Product> searchResults(String keyword, String categoryId, String makeId, String year, Pageable pageable) {
+        List<Product> products = productRepository.searchProduct2(keyword, categoryId, makeId, year);
         //return products;
 
         int pageSize = pageable.getPageSize();

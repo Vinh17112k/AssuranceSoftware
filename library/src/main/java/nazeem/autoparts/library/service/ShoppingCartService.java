@@ -5,9 +5,9 @@ package nazeem.autoparts.library.service;
     Contact: syed.noman.azeem@gmail.com
 */
 import nazeem.autoparts.library.model.CartItem;
-import nazeem.autoparts.library.model.Customer;
-import nazeem.autoparts.library.model.Product;
 import nazeem.autoparts.library.model.ShoppingCart;
+import nazeem.autoparts.library.model.customer.Customer;
+import nazeem.autoparts.library.model.product.Product;
 import nazeem.autoparts.library.repository.CartItemRepository;
 import nazeem.autoparts.library.repository.ShoppingCartRepository;
 import org.springframework.beans.factory.annotation.Autowired;

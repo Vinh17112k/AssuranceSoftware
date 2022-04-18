@@ -7,6 +7,7 @@ package nazeem.autoparts.library.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import nazeem.autoparts.library.model.customer.Customer;
 
 import javax.persistence.*;
 import java.util.Date;

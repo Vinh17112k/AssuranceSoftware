@@ -1,15 +1,15 @@
 package nazeem.autoparts.library.service.impl;
 
-/*
-    Created By: noman azeem
-    Contact: syed.noman.azeem@gmail.com
-*/
-import nazeem.autoparts.library.model.Country;
-import nazeem.autoparts.library.model.Customer;
-import nazeem.autoparts.library.model.Role;
-import nazeem.autoparts.library.model.User;
+import nazeem.autoparts.library.model.customer.Country;
+import nazeem.autoparts.library.model.customer.Customer;
+import nazeem.autoparts.library.model.customer.Fullname;
+import nazeem.autoparts.library.model.user.Role;
+import nazeem.autoparts.library.model.user.User;
+import nazeem.autoparts.library.model.customer.Addresses;
+import nazeem.autoparts.library.repository.AddressRepository;
 import nazeem.autoparts.library.repository.CountryRepository;
 import nazeem.autoparts.library.repository.CustomerRepository;
+import nazeem.autoparts.library.repository.FullnameRepository;
 import nazeem.autoparts.library.repository.RoleRepository;
 import nazeem.autoparts.library.service.CustomerService;
 import nazeem.autoparts.library.web.dto.CustomerRegistrationDto;
@@ -25,6 +25,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+import javax.mail.Address;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -39,7 +41,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
-
+    @Autowired
+    private FullnameRepository fullnameRepository;
+    @Autowired
+    private AddressRepository addressRepository;
 
 
     public CustomerServiceImpl() {
@@ -51,11 +56,25 @@ public class CustomerServiceImpl implements CustomerService {
 
         //Creating admin role user
         Customer customer = new Customer();
-        customer.setFirstName(registrationDto.getFirstName());
-        customer.setLastName(registrationDto.getLastName());
+        String firstName = registrationDto.getFirstName();
+        String lastName = registrationDto.getLastName();
+        Fullname fullname = new Fullname(firstName, lastName);
+        fullnameRepository.save(fullname);
+        String district = registrationDto.getAddress1();
+        String number = registrationDto.getAddress2();
+        String city = registrationDto.getCity();
+        Addresses address = new Addresses(number, district, city);
+        addressRepository.save(address);
+        
+        customer.setFullname(fullname);
         customer.setUsername(registrationDto.getUsername());
-        customer.setPhone(registrationDto.getPhone());
         customer.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
+        customer.setAddress(address);;
+//        customer.setFirstName(registrationDto.getFirstName());
+//        customer.setLastName(registrationDto.getLastName());
+//        customer.setUsername(registrationDto.getUsername());
+        customer.setPhone(registrationDto.getPhone());
+//        customer.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
         customer.setRoles(Arrays.asList(roleRepository.findByName("CUSTOMER")));
         customer.setIsDeleted(false);
 
@@ -64,10 +83,10 @@ public class CustomerServiceImpl implements CustomerService {
 
         //Address
         customer.setCompany(registrationDto.getCompany());
-        customer.setAddress1(registrationDto.getAddress1());
-        customer.setAddress2(registrationDto.getAddress2());
+//        customer.setAddress1(registrationDto.getAddress1());
+//        customer.setAddress2(registrationDto.getAddress2());
         customer.setPostalCode(registrationDto.getPostalCode());
-        customer.setCity(registrationDto.getCity());
+//        customer.setCity(registrationDto.getCity());
         customer.setCountry(country);
         customer.setState(registrationDto.getState());
 
@@ -93,6 +112,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return new org.springframework.security.core.userdetails.User(customer.getUsername(), customer.getPassword()
                 , mapRolesToAuthorities(customer.getRoles()));
+//    	return null;
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){

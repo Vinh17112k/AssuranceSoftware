@@ -14,10 +14,6 @@
             </div>
             <div class="right-block">
                 <div class="button-group cartinfo--static">
-
-                    <!--<button type="button" class="addToCart" title="Add to cart" onclick="cart.add('60 ');">
-                        <span>Add to cart </span>
-                    </button>-->
                     <a th:href="@{/part-details(id=${productInfo.id})}" class="addToCart" title="Add to cart">Add to cart</a>
                 </div>
                 <h4><a th:href="@{/part-details(id=${productInfo.id})}" th:title="${productInfo.name}" target="_self" th:text="${productInfo.name}"></a></h4>
@@ -27,10 +23,6 @@
                 <div class="description item-desc">
                     <p th:text="${productInfo.description}"></p>
                 </div>
-                <!--<div class="list-block">
-                    <button class="addToCart btn-button" type="button" title="Add to Cart" onclick="cart.add('101', '1');"><i class="fa fa-shopping-basket"></i>
-                    </button>
-                </div>-->
             </div>
         </div>
     </div>

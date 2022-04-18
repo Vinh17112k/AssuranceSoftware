@@ -6,6 +6,8 @@ package nazeem.autoparts.library.model;
 */
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import nazeem.autoparts.library.model.customer.Customer;
+
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;

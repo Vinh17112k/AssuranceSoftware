@@ -5,6 +5,9 @@ package nazeem.autoparts.client.controller;
     Contact: syed.noman.azeem@gmail.com
 */
 import nazeem.autoparts.library.model.*;
+import nazeem.autoparts.library.model.customer.Country;
+import nazeem.autoparts.library.model.customer.Customer;
+import nazeem.autoparts.library.model.product.Product;
 import nazeem.autoparts.library.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

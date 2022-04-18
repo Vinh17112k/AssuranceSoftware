@@ -19,7 +19,7 @@
         <!--Middle Part Start-->
         <div class="col-sm-9" id="content">
             <h2 class="title">My Account</h2>
-            <p class="lead">Hello, <strong th:text="${customer.firstName}+' '+${customer.lastName}"></strong> - To update your account information.</p>
+            <p class="lead">Hello, <strong th:text="${customer.fullname.firstName}"></strong> - To update your account information.</p>
 
             <form th:action="@{/my-account}" th:object="${customer}" enctype="multipart/form-data" method="post">
 
@@ -42,13 +42,13 @@
                             <legend>Personal Details</legend>
                             <div class="form-group required">
                                 <label for="firstName" class="control-label">First Name</label>
-                                <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="First Name" th:value="${firstName}">
-                                <p th:if="${#fields.hasErrors('firstName')}" th:errorclass="error" th:errors="*{firstName}" />
+                                <input type="text" class="form-control" th:field="*{fullname.firstName}" id="firstName" placeholder="First Name" th:value="${firstName}">
+                                <p th:if="${#fields.hasErrors('fullname.firstName')}" th:errorclass="error" th:errors="*{firstName}" />
                             </div>
                             <div class="form-group required">
                                 <label for="lastName" class="control-label">Last Name</label>
-                                <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Last Name" th:value="${lastName}">
-                                <p th:if="${#fields.hasErrors('lastName')}" th:errorclass="error" th:errors="*{lastName}" />
+                                <input type="text" class="form-control" th:field="*{fullname.lastname}" id="lastName" placeholder="Last Name" th:value="${lastName}">
+                                <p th:if="${#fields.hasErrors('fullname.lastname')}" th:errorclass="error" th:errors="*{lastName}" />
                             </div>
                             <div class="form-group required">
                                 <label for="username" class="control-label">Username (E-Mail Address)</label>
@@ -64,6 +64,7 @@
                         <br>
                     </div>
                 </div>
+                
                 <div class="row">
                     <div class="col-sm-6">
                         <fieldset id="address">
@@ -74,17 +75,17 @@
                             </div>
                             <div class="form-group required">
                                 <label for="address1" class="control-label">Address 1</label>
-                                <input type="text" th:field="*{address1}" placeholder="Address 1" id="address1" class="form-control" th:value="${address1}">
-                                <p th:if="${#fields.hasErrors('address1')}" th:errorclass="error" th:errors="*{address1}" />
+                                <input type="text" th:field="*{address.number}" placeholder="Address 1" id="address1" class="form-control" th:value="${address1}">
+                                <p th:if="${#fields.hasErrors('address.number')}" th:errorclass="error" th:errors="*{number}" />
                             </div>
                             <div class="form-group">
                                 <label for="address2" class="control-label">Address 2</label>
-                                <input type="text" th:field="*{address2}" placeholder="Address 2" id="address2" class="form-control" th:value="${address2}">
+                                <input type="text" th:field="*{address.district}" placeholder="Address 2" id="address2" class="form-control" th:value="${address2}">
                             </div>
                             <div class="form-group required">
                                 <label for="city" class="control-label">City</label>
-                                <input type="text" th:field="*{city}" placeholder="City" id="city" class="form-control" th:value="${city}">
-                                <p th:if="${#fields.hasErrors('city')}" th:errorclass="error" th:errors="*{city}" />
+                                <input type="text" th:field="*{address.city}" placeholder="City" id="city" class="form-control" th:value="${city}">
+                                <p th:if="${#fields.hasErrors('address.city')}" th:errorclass="error" th:errors="*{city}" />
                             </div>
                             <div class="form-group required">
                                 <label for="postalCode" class="control-label">Post Code</label>

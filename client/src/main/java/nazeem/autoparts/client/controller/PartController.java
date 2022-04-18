@@ -1,16 +1,12 @@
 package nazeem.autoparts.client.controller;
 
-/*
-    Created By: noman azeem
-    Contact: syed.noman.azeem@gmail.com
-*/
-import nazeem.autoparts.library.model.Category;
-import nazeem.autoparts.library.model.Make;
+import nazeem.autoparts.library.model.product.Category;
+import nazeem.autoparts.library.model.product.Make;
+import nazeem.autoparts.library.model.product.Product;
 import nazeem.autoparts.library.service.CategoryService;
 import nazeem.autoparts.library.service.MakeService;
 import nazeem.autoparts.library.service.ModelService;
 import nazeem.autoparts.library.service.ProductService;
-import nazeem.autoparts.library.model.Product;
 import nazeem.autoparts.library.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -62,11 +58,11 @@ public class PartController {
         Page<Product> productList;
         Category category;
         if (id.isPresent()) {
-            productList = productService.searchResults("", id.get().toString(), "1", "1", "",  PageRequest.of(currentPage-1, pageSize));
+            productList = productService.searchResults("", id.get().toString(), "1", "",  PageRequest.of(currentPage-1, pageSize));
             //productList = productService.findAllByCategoryId(id.get(), PageRequest.of(currentPage-1, pageSize));
             category = categoryService.get(id.get());
         } else {
-            productList = productService.searchResults("", "", "1", "1", "",  PageRequest.of(currentPage-1, pageSize));
+            productList = productService.searchResults("", "", "1",  "",  PageRequest.of(currentPage-1, pageSize));
             //productList = productService.findPaginated("", PageRequest.of(currentPage-1, pageSize));
             category = new Category();
             category.setName("All Categories");
@@ -141,7 +137,7 @@ public class PartController {
         List<Make> listMake = makeService.findAll();
         model.addAttribute("listMake", listMake);
 
-        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(Long.parseLong(makeId));
+        List<nazeem.autoparts.library.model.product.Model> listModel = modelService.getModels(Long.parseLong(makeId));
         model.addAttribute("listModel", listModel);
 
         List<Integer> listYear = utility.getYears();
@@ -149,7 +145,7 @@ public class PartController {
 
 
         //All parts
-        Page<Product> productList = productService.searchResults(keyword, categoryId, makeId, modelId, yearId
+        Page<Product> productList = productService.searchResults(keyword, categoryId, makeId, yearId
                 ,  PageRequest.of(currentPage-1, pageSize));
         model.addAttribute("productList", productList);
 
@@ -259,7 +255,7 @@ public class PartController {
         List<Make> listMake = makeService.findAll();
         model.addAttribute("listMake", listMake);
 
-        List<nazeem.autoparts.library.model.Model> listModel = modelService.getModels(listMake.get(0).getId());
+        List<nazeem.autoparts.library.model.product.Model> listModel = modelService.getModels(listMake.get(0).getId());
         model.addAttribute("listModel", listModel);
 
         List<Integer> listYear = utility.getYears();

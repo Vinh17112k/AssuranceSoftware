@@ -1,10 +1,6 @@
 package nazeem.autoparts.admin.controller;
 
-/*
-    Created By: noman azeem
-    Contact: syed.noman.azeem@gmail.com
-*/
-import nazeem.autoparts.library.model.User;
+import nazeem.autoparts.library.model.user.User;
 import nazeem.autoparts.library.service.UserService;
 import nazeem.autoparts.library.web.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -4,8 +4,10 @@ package nazeem.autoparts.library.service;
     Created By: noman azeem
     Contact: syed.noman.azeem@gmail.com
 */
-import nazeem.autoparts.library.model.Customer;
+
 import nazeem.autoparts.library.model.Order;
+import nazeem.autoparts.library.model.customer.Customer;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.SimpleMailMessage;
@@ -49,7 +51,7 @@ public class EmailService {
             simpleMailMessage.setText(
                     String.format("Dear %s, Thank you for registration with Ecommerce Application !." +
                                     "\n please login %s"
-                    , customer.getFullName(), loginUrl));
+                    , customer.getFullname().getLastname(), loginUrl));
             simpleMailMessage.setFrom(environment.getProperty("from.email"));
 
             javaMailSender.send(simpleMailMessage);
@@ -72,7 +74,7 @@ public class EmailService {
             simpleMailMessage.setText(
                     String.format("Dear %s, Thank you for made order with Ecommerce Application !"+
                                     "\n please view your order details %s"
-                            , order.getCustomer().getFullName(), viewOrdersUrl));
+                            , order.getCustomer().getFullname().getFirstName(), viewOrdersUrl));
             simpleMailMessage.setFrom(environment.getProperty("from.email"));
 
             javaMailSender.send(simpleMailMessage);

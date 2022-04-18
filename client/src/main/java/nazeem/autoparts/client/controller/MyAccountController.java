@@ -4,9 +4,10 @@ package nazeem.autoparts.client.controller;
     Created By: noman azeem
     Contact: syed.noman.azeem@gmail.com
 */
-import nazeem.autoparts.library.model.Country;
-import nazeem.autoparts.library.model.Customer;
+
 import nazeem.autoparts.library.model.Order;
+import nazeem.autoparts.library.model.customer.Country;
+import nazeem.autoparts.library.model.customer.Customer;
 import nazeem.autoparts.library.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -49,6 +50,7 @@ public class MyAccountController {
 
         //Get logged in customer
         Customer customer = customerService.findByUsername(currentUserName);
+        
         model.addAttribute("customer", customer);
 
         //Get countries list

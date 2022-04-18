@@ -1,11 +1,7 @@
 package nazeem.autoparts.library.service.impl;
 
-/*
-    Created By: noman azeem
-    Contact: syed.noman.azeem@gmail.com
-*/
-import nazeem.autoparts.library.model.Role;
-import nazeem.autoparts.library.model.User;
+import nazeem.autoparts.library.model.user.Role;
+import nazeem.autoparts.library.model.user.User;
 import nazeem.autoparts.library.repository.RoleRepository;
 import nazeem.autoparts.library.repository.UserRepository;
 import nazeem.autoparts.library.service.UserService;

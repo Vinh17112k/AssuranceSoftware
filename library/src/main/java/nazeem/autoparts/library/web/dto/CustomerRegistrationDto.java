@@ -7,7 +7,6 @@ package nazeem.autoparts.library.web.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import nazeem.autoparts.library.model.Customer;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;

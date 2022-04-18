@@ -53,7 +53,7 @@
 
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Make :</label>
+                            <label class="col-sm-2 control-label">Brand :</label>
                             <div class="col-sm-10">
                                 <select class="form-control make" th:field="*{make.id}">
                                     <option th:each="makeInfo : ${listMake}" th:value="${makeInfo.id}" th:utext="${makeInfo.name}"/>
@@ -61,14 +61,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="col-sm-2 control-label">Model :</label>
                             <div class="col-sm-10">
                                 <select class="form-control model" th:field="*{model.id}">
                                     <option th:each="modelInfo : ${listModel}" th:value="${modelInfo.id}" th:utext="${modelInfo.name}"/>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Year :</label>

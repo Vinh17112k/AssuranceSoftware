@@ -3,14 +3,14 @@
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
       layout:decorate="~{layout}">
 <head>
-    <title>Part Search</title>
+    <title>Page Search</title>
 </head>
 <body>
 <!-- Main Container  -->
 <div layout:fragment="content" class="main-container container">
     <ul class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i></a></li>
-        <li><a href="#">Part Search</a></li>
+        <li><a href="#">Page Search</a></li>
     </ul>
 
     <div class="row">
@@ -21,13 +21,13 @@
         <!--Middle Part Start-->
         <div id="content" class="col-md-9 col-sm-8">
             <div class="products-category">
-                <h3 class="title-category ">Part Search</h3>
+                <h3 class="title-category ">Page Search</h3>
                 <div class="category-desc">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="banners">
                                 <div>
-                                    <a  href="#"><img th:src="@{/image/catalog/banners/id8-bn4.jpg}" alt="img part"><br></a>
+                                    <a  href="#"><img th:src="@{/image/catalog/banners/laptop.jpg}" alt="img part"><br></a>
                                 </div>
                             </div>
                         </div>
@@ -44,40 +44,6 @@
                             </div>
 
                         </div>
-                        <!--<div class="short-by-show form-inline text-right col-md-7 col-sm-9 col-xs-12">
-                            <div class="form-group short-by">
-                                <label class="control-label" for="input-sort">Sort By:</label>
-                                <select id="input-sort" class="form-control"
-                                        onchange="location = this.value;">
-                                    <option value="" selected="selected">Default</option>
-                                    <option value="">Name (A - Z)</option>
-                                    <option value="">Name (Z - A)</option>
-                                    <option value="">Price (Low &gt; High)</option>
-                                    <option value="">Price (High &gt; Low)</option>
-                                    <option value="">Rating (Highest)</option>
-                                    <option value="">Rating (Lowest)</option>
-                                    <option value="">Model (A - Z)</option>
-                                    <option value="">Model (Z - A)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label" for="input-limit">Show:</label>
-                                <select id="input-limit" class="form-control" onchange="location = this.value;">
-                                    <option value="" selected="selected">15</option>
-                                    <option value="">25</option>
-                                    <option value="">50</option>
-                                    <option value="">75</option>
-                                    <option value="">100</option>
-                                </select>
-                            </div>
-                        </div>-->
-                        <!-- <div class="box-pagination col-md-3 col-sm-4 col-xs-12 text-right">
-                            <ul class="pagination">
-                                <li class="active"><span>1</span></li>
-                                <li><a href="">2</a></li><li><a href="">&gt;</a></li>
-                                <li><a href="">&gt;|</a></li>
-                            </ul>
-                        </div> -->
                     </div>
                 </div>
                 <!-- //end Filters -->
@@ -88,7 +54,7 @@
                 <nav th:if="${productList.totalPages > 0}" aria-label="Page navigation example">
                     <ul th:each="pageNumber : ${pageNumbers}" class="pagination">
                         <li th:class="${pageNumber == currentPage} ? 'page-item active' : 'page-item '">
-                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, model=${param.model}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${pageNumber})}"
+                            <a th:href="@{/part-search(name=${param.name}, make=${param.make}, year=${param.year}, category=${param.category}, size=${productList.size}, page=${pageNumber})}"
                                th:text="${pageNumber}" ></a>
                         </li>
                     </ul>
@@ -119,17 +85,6 @@
                 var url = /*[[@{/models}]]*/
                 getModels(url);
             });
-
-
-            <!--
-            // Check if Cookie exists
-            if($.cookie('display')){
-                view = $.cookie('display');
-            }else{
-                view = 'grid';
-            }
-            if(view) display(view);
-            //-->
         });
     </script>
 </th:block>

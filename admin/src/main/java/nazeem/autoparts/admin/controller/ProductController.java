@@ -7,6 +7,10 @@ package nazeem.autoparts.admin.controller;
 import javax.validation.Valid;
 
 import nazeem.autoparts.library.model.*;
+import nazeem.autoparts.library.model.product.Category;
+import nazeem.autoparts.library.model.product.Make;
+import nazeem.autoparts.library.model.product.Model;
+import nazeem.autoparts.library.model.product.Product;
 import nazeem.autoparts.library.service.CategoryService;
 import nazeem.autoparts.library.service.MakeService;
 import nazeem.autoparts.library.service.ModelService;
@@ -54,8 +58,8 @@ public class ProductController {
         List<Make> listMake = makeService.findAll();
         model.addAttribute("listMake", listMake);
 
-        List<Model> listModel = modelService.getModels(listMake.get(0).getId());
-        model.addAttribute("listModel", listModel);
+//        List<Model> listModel = modelService.getModels(listMake.get(0).getId());
+//        model.addAttribute("listModel", listModel);
 
         List<Integer> listYear = utility.getYears();
         model.addAttribute("listYear", listYear);
